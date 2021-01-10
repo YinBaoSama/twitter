@@ -2,11 +2,8 @@
 \pdcontentsline{0}{4}{Problem Description}
 \pdcontentsline{1}{5}{Data Visualization}
 \pdcontentsline{0}{6}{Data Visualization}
-\pdcontentsline{1}{19}{GOAM Algorithm}
-\pdcontentsline{0}{21}{Step One - Group Feature Extraction}
-\pdcontentsline{0}{22}{Step Two - Outlying Degree Scoring}
-\pdcontentsline{0}{24}{Step Three - Outlying Aspects Identification}
-\pdcontentsline{1}{29}{Evaluation Results}
-\pdcontentsline{0}{31}{Synthetic Dataset}
-\pdcontentsline{0}{33}{NBA Dataset}
-\pdcontentsline{1}{37}{Conclusion}
+\pdcontentsline{1}{19}{Build The Model}
+\pdcontentsline{0}{20}{Model:MLP}
+\pdcontentsline{0}{22}{Model:roBERTa}
+\pdcontentsline{1}{25}{Conclusion}
+\pdcontentsline{0}{26}{Conclusion}
