@@ -1,0 +1,387 @@
+%%
+%% This is file `tikzposter-template.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikzposter.dtx  (with options: `tikzposter-template.tex')
+%%
+%% This is a generated file.
+%%
+%% Copyright (C) 2014 by Pascal Richter, Elena Botoeva, Richard Barnard, and Dirk Surmann
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 2.0 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%%
+%% http://www.latex-project.org/lppl.txt
+%%
+%% and version 2.0 or later is part of all distributions of
+%% LaTeX version 2013/12/01 or later.
+%%
+
+
+\documentclass{tikzposter} %Options for format can be included here
+
+\usepackage{todonotes}
+
+\usepackage[tikz]{bclogo}
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[absolute]{textpos}
+\usepackage[it]{subfigure}
+\usepackage{graphicx}
+\usepackage{cmbright}
+%\usepackage[default]{cantarell}
+%\usepackage{avant}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+\usepackage[T1]{fontenc}
+
+\usepackage{diagbox} 
+
+%% add your packages here
+\usepackage{hyperref}
+% for random text
+\usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
+
+
+\colorlet{backgroundcolor}{blue!10}
+
+ % Title, Author, Institute
+\title{FLIP00 Final Assessment}
+\author{Cong Ma}
+\institute{$^1$ QingDao Technological University, China \\
+}
+%\titlegraphic{logos/tulip-logo.eps}
+
+%Choose Layout
+\usetheme{Wave}
+
+%\definebackgroundstyle{samplebackgroundstyle}{
+%\draw[inner sep=0pt, line width=0pt, color=red, fill=backgroundcolor!30!black]
+%(bottomleft) rectangle (topright);
+%}
+%
+%\colorlet{backgroundcolor}{blue!10}
+
+\begin{document}
+
+
+\colorlet{blocktitlebgcolor}{blue!23}
+
+ % Title block with title, author, logo, etc.
+\maketitle
+
+\begin{columns}
+ % FIRST column
+\column{0.5}% Width set relative to text width
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+ %\block{Main Objectives}{
+%  	      	\begin{enumerate}
+%  	      	\item Formalise research problem by extending \emph{outlying aspects mining}
+%  	      	\item Proposed \emph{GOAM} algorithm is to solve research problem
+%  	      	\item Utilise pruning strategies to reduce time complexity
+%  	      	\end{enumerate}
+%%  	      \end{minipage}
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{One-hot Coder}{
+      % Many real world applications call for one important function
+    \begin{itemize}	
+    
+    \item
+    One-hot coding is a process of transforming class variables into machine learning algorithms.
+    
+    \end{itemize}
+
+  	\begin{description}
+  	%\item[Outlying Aspects Mining] aims to identify a subspace
+    %The task of \emph{Outlying Aspects Mining}
+    
+    \item
+    In my opinion,one-hot can process the data,and turn them into binary vector.
+    If an attribute has n values, attributes. Only one of
+    the N attributes of each sample can be 1, which means that the attribute of the
+    sample belongs to this category, and the other extended attributes are 0.
+
+  	\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{One-hot Coder Shortcoming}{
+\begin{itemize}
+    %\emph{Group Outlying Aspects Mining}
+    
+    \item
+      It doesn't work in \emph{logistic regression}. Because logistic regression requires
+    variables to be independent of each other. If you have only one attribute that
+    needs one hot coding, if a sample are 1 at the same time, the
+    two attributes will be completely related, which will inevitably lead to singular
+    Error.
+    
+    \item
+      That is, nonsingular matrix can't solve the unique solution and get the
+    unique model, but you can't delete a certain one hot extension variable of the same attribute.
+    
+    \item
+    For example, if we want to code ""China", "America", "Japan", "America"" one hot, how can we do it?
+    First we let "China" = 0 , "America" = 1, "Japan" = 2;
+    
+\end{itemize}
+
+\vspace{.5cm}
+
+%数字和符号之间加 " \ "
+\center
+
+\begin{tabular}{ c | c | c | c }%几个c就有几行
+
+    \toprule 
+    Country           &  China           & America         & Japan     \\
+    \midrule
+    China             &  $ 1 $           &  $ 0 $          &   0       \\
+
+    America           &  $ 0 $           &  $ 1 $          &   0       \\
+
+    Japan             &  $ 0 $           &  $ 0 $          &   1       \\
+     \bottomrule
+     
+\end{tabular}
+
+\begin{description}
+  	%\item[Outlying Aspects Mining] aims to identify a subspace
+    %The task of \emph{Outlying Aspects Mining}
+    \item
+    Now we can get the one-hot code as:\\
+    ""China", "America", "Japan", "America"" = [[1,0,0], [0,1,0], [0,0,1], [0,1,0]]
+
+  	\end{description}
+
+\vspace{.2cm}
+
+
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+%\note{Note with default behavior}
+
+%\note[targetoffsetx=12cm, targetoffsety=-1cm, angle=20, rotate=25]
+%{Note \\ offset and rotated}
+
+ % First column - second block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Bagging Algorithm}{
+
+
+%\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+%    \missingfigure[figcolor=white]{Testing figcolor}
+%\end{tikzfigure}
+
+%  where $G_q$ is the query group,
+%  $n$ is the number of compare groups,
+%  and $h_{k_s}$ is the histogram representation of $G_k$ in the subspace $s$.
+
+\begin{description}
+
+  	\item
+   Based on bootstrap sampling, bagging algorithm can be constructed.
+   In this method, the train set is sampled several times by
+   bootstrap, and a weak learner model is trained with the data set formed
+   by each sampling, and several independent weak learners are obtained.
+   Finally, the combination of thus to predict. The training process is as follows:
+   
+\end{description}
+
+  \begin{itemize}	
+  
+    \item
+    Cycle, for I = 1,..., t.
+    
+     \item
+    The training sample set is obtained by bootstrap sampling.
+    
+     \item
+    A sample set of H is used to train the model.
+    
+     \item
+     End cycle output model combination.
+     
+  \end{itemize}
+
+}
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% SECOND column
+\column{0.5}
+ %Second column with first block's top edge aligned with with previous column's top.
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+% Second column - first block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Ensemble learning and Bootstrap sampling}{
+   \begin{itemize}	
+   
+    \item
+    Before we talk about the random forest,there are two ideas we need to know.
+    
+   \end{itemize}
+   
+  	\begin{description}
+  	%\item[Outlying Aspects Mining] aims to identify a subspace
+    %The task of \emph{Outlying Aspects Mining}
+    \item[Ensemble learning]combines multiple models to form a more accurate model.
+    The model involved in the combination is called weak learner.
+    These weak learner models are used to predict jointly
+    \item[Bootstrap sampling] is to take n samples back in the n samples set to form a data set.
+    By the way,If the sample size is large, there is a 0.368 probability
+    that each sample will not be selected in the whole sampling process.\\
+    But why? let's make a experience.\\
+    
+  	\end{description}
+  
+   \begin{itemize}	
+   
+    \item
+    If there are 10 samples, bootstrap sampling randomly takes 10
+    samples from them. The following two situations are possible:
+    \center
+    \item
+    1 1 1 1 1 1 1 1 1 1 \\
+    1 2 3 4 5 6 7 8 9 10
+    
+   \end{itemize}
+   
+   \begin{itemize}
+   
+    \item
+    Suppose there are n samples in the sample set, and the probability of
+    any one sample in each sampling is 1 / N, that is equal probability.
+    The probability that a sample is not selected in each sampling is 1-1 / n.
+    
+    \center
+    \item
+    $\lim\limits_{n \to \infty}(1-1/n)^n = 1/e = 0.368.$
+    
+   \end{itemize}
+
+  	
+}
+
+\block{Random Forest}
+{
+\begin{description}
+
+  	\item
+    First, a random forest is composed of multiple decision trees. For the
+    classification pro sample will be sent to each decision tree
+    for prediction, and then vote. The class with the most votes is the final
+    classification result. For regression problems, the prediction output of
+    random forest is the mean value of all decision tree outputs.
+    
+    \item
+    That is to say, multiple random variables are added to get the mean value,
+    and the variance will be reduced. If the output value of each decision tree
+    is regarded as a random variable, the mean variance of the output value of 
+    multiple trees will be smaller than that of a single tree, so the variance 
+    of the model can be reduced.
+    
+    \item
+    The training samples of each tree are obtained by bootstrap sampling 
+    from the original training set. The features used in training each node of
+     decision tree are also obtained by random sampling, that is, some features
+      are randomly extracted from the feature vector to participate in the training.
+\end{description}
+
+   \begin{itemize}	
+   
+    \item
+    There is no standard answer to determine the number of decision 
+    trees and the number of features to be selected for each split. The 
+    first problem depends on the size of the training set and the characteristics 
+    of the problem. There is no exact theoretical answer to the second question,
+     which can be determined by experiments.
+     
+   \end{itemize}
+
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Second column - second block
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Bottomblock
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+
+
+%\note[targetoffsetx=8cm, targetoffsety=-10cm,rotate=0,angle=180,radius=8cm,width=.46\textwidth,innersep=.1cm]{
+%Acknowledgement
+%}
+
+%\block[titlewidthscale=0.9, bodywidthscale=0.9]
+%{Acknowledgement}{
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+\end{columns}
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+%[titleleft, titleoffsetx=2em, titleoffsety=1em, bodyoffsetx=2em,%
+%roundedcorners=10, linewidth=0mm, titlewidthscale=0.7,%
+%bodywidthscale=0.9, titlecenter]
+
+%\colorlet{noteframecolor}{blue!20}
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+%           左右                                            上下
+\note[targetoffsetx=-13cm, targetoffsety=-20cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
+{
+\begin{minipage}{0.3\linewidth}
+\centering
+\includegraphics[width=24cm]{logos/tulip-wordmark.eps}
+\end{minipage}
+\begin{minipage}{0.7\linewidth}
+{ 
+\center
+ Thanks for watching  2020/10/16
+}
+\end{minipage}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+\end{document}
+
+%\endinput
+%%
+%% End of file `tikzposter-template.tex'.
+
