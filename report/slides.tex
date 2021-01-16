@@ -710,23 +710,23 @@ the outstanding features of the query object.
 \end{slide}
 
 
-\begin{slide}[toc=,bm=]{Data Visualization}
+% \begin{slide}[toc=,bm=]{Data Visualization}
   
-  \begin{itemize}
-    \item
-    Let's take a look at the proportion of each category of text in another visualization method.
+%   \begin{itemize}
+%     \item
+%     Let's take a look at the proportion of each category of text in another visualization method.
     
-    \begin{itemize}
-    \item
-    Most of them are neutral emotions,has 40.5 present.Positive are 31.2 persent.Negetive are 28.3 persent.
-    \end{itemize}
+%     \begin{itemize}
+%     \item
+%     Most of them are neutral emotions,has 40.5 present.Positive are 31.2 persent.Negetive are 28.3 persent.
+%     \end{itemize}
   
-  \end{itemize}
+%   \end{itemize}
   
-  \begin{center}
-      \includegraphics[scale=0.5]{D:/filp/program/twitter.git/data/persent.eps}
-  \end{center}
-\end{slide}  
+%   \begin{center}
+%       \includegraphics[scale=0.5]{D:/filp/program/twitter.git/data/persent.eps}
+%   \end{center}
+% \end{slide}  
 
 
 \begin{slide}[toc=,bm=]{Data Visualization}
@@ -1099,17 +1099,28 @@ the outstanding features of the query object.
 %%
 %%==========================================================================================
 
+\section{Data Process}
+
+\begin{slide}[]{Data Process}
+  \begin{itemize}
+  \item
+  Observe the given training set, and the extracted words are part of the original sentence.
+  \item
+  The data processing part will only delete the blank data in the given training set.
+  \end{itemize}
+\end{slide} 
+
 
 \section{Build The Model}
 
 
 %%==========================================================================================
 %%
-\begin{slide}[]{Model:MLP}
+\begin{slide}[]{Model:CRF+LSTM}
 
   \begin{itemize}
     \item
-    First, the MLP model with simple structure is used.
+    First, the CRF+LSTM model  is used.
   \end{itemize}
 
   \begin{center}
@@ -1118,7 +1129,7 @@ the outstanding features of the query object.
 
 \end{slide} 
 
-\begin{slide}[toc=,bm=]{Model:MLP}
+\begin{slide}[toc=,bm=]{Model:CRF+LSTM}
 
     \begin{itemize}
     \item
@@ -1135,14 +1146,22 @@ the outstanding features of the query object.
     The loss function is “categorical_crossentropy”.
     \item
     Epochs = 10.
-    
+  \end{itemize}
     \bigskip
-     \begin{itemize}
-      \item
-      Finally, the loss rate of the trained model is 0.5393.
-     \end{itemize}
+    
+\end{slide} 
 
-    \end{itemize}
+\begin{slide}[toc=,bm=]{Model:CRF+LSTM}
+  
+  \begin{center}
+      \includegraphics[scale=0.45]{D:/filp/program/twitter.git/data/modelone.eps}
+  \end{center}
+  
+  \begin{itemize}
+    \item
+    Finally, the loss rate of the trained model is 0.5393.
+   \end{itemize}
+
 \end{slide} 
 % \begin{figure}
 %   \centering
@@ -1225,11 +1244,19 @@ the outstanding features of the query object.
     \item
     Using k-fold cross validation, it is divided into five parts. Train five times.
     \end{itemize}
+  \end{slide} 
 
+  \begin{slide}[toc=,bm=]{Model:roBERTa}
+  
+    \begin{center}
+        \includegraphics[scale=0.6]{D:/filp/program/twitter.git/data/modeltwo.eps}
+    \end{center}
+    
     \begin{itemize}
       \item
       Finally, the loss rate of the trained model is 0.7072782233322157.
      \end{itemize}
+     
   \end{slide} 
 %%==========================================================================================
 %%
@@ -1922,40 +1949,40 @@ the outstanding features of the query object.
 
 %%==========================================================================================
 %%
-\begin{slide}[]{Conclusion}
-\begin{itemize}
-\item
-\smallskip
-Formalize the problem of \emph{Group Outlying Aspects Mining} by
-extending outlying aspects mining;
+% \begin{slide}[]{Conclusion}
+% \begin{itemize}
+% \item
+% \smallskip
+% Formalize the problem of \emph{Group Outlying Aspects Mining} by
+% extending outlying aspects mining;
 
-\item
-\smallskip
-Propose a novel method \textcolor{orange}{GOAM algorithm} to solve the
-\emph{Group Outlying Aspects Mining} problem;
+% \item
+% \smallskip
+% Propose a novel method \textcolor{orange}{GOAM algorithm} to solve the
+% \emph{Group Outlying Aspects Mining} problem;
 
-\item
-\smallskip
-Utilize the pruning strategies to reduce time complexity.
+% \item
+% \smallskip
+% Utilize the pruning strategies to reduce time complexity.
 
-\end{itemize}
+% \end{itemize}
 
-%%==========================================================================================
-% \begin{note}
-% In conclusion,
-% we firstly formalized the problem of
-% group outlying aspects mining,
+% %%==========================================================================================
+% % \begin{note}
+% % In conclusion,
+% % we firstly formalized the problem of
+% % group outlying aspects mining,
 
-% Then proposed a novel method GOAM algorithm to address the problem of
-% group outlying aspects mining,
-% and the proposed method use pruning to reduce time complexity
-% while identifying the suitable set of outlying features for the interested group.
+% % Then proposed a novel method GOAM algorithm to address the problem of
+% % group outlying aspects mining,
+% % and the proposed method use pruning to reduce time complexity
+% % while identifying the suitable set of outlying features for the interested group.
 
-% Thank you and any question?
-% \end{note}
-%%==========================================================================================
+% % Thank you and any question?
+% % \end{note}
+% %%==========================================================================================
 
-\end{slide}
+% \end{slide}
 %%
 %%==========================================================================================
 
@@ -1975,7 +2002,7 @@ Utilize the pruning strategies to reduce time complexity.
 
 %%==========================================================================================
 % TODO: Contact Page
-\begin{wideslide}[toc=,bm=]{Contact Information}
+\begin{wideslide}[]{Contact Information}
 \centering
 \vspace{\stretch{1}}
 \twocolumn[

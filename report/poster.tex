@@ -42,7 +42,7 @@
 \usepackage[math]{kurier}
 \usepackage[T1]{fontenc}
 
-\usepackage{diagbox} 
+\usepackage{diagbox}
 
 %% add your packages here
 \usepackage{hyperref}
@@ -55,7 +55,7 @@
 \colorlet{backgroundcolor}{blue!10}
 
  % Title, Author, Institute
-\title{FLIP00 Final Assessment}
+\title{FLIP01 Final Assessment}
 \author{Cong Ma}
 \institute{$^1$ QingDao Technological University, China \\
 }
@@ -96,24 +96,26 @@
 
 
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
-\block{One-hot Coder}{
+\block{MODEL:BERT}{
       % Many real world applications call for one important function
     \begin{itemize}	
-    
+
     \item
-    One-hot coding is a process of transforming class variables into machine learning algorithms.
-    
+    A robust method to optimize the best pre training.
+
     \end{itemize}
 
   	\begin{description}
   	%\item[Outlying Aspects Mining] aims to identify a subspace
     %The task of \emph{Outlying Aspects Mining}
-    
+
     \item
-    In my opinion,one-hot can process the data,and turn them into binary vector.
-    If an attribute has n values, attributes. Only one of
-    the N attributes of each sample can be 1, which means that the attribute of the
-    sample belongs to this category, and the other extended attributes are 0.
+    The essence of best is to run self supervised learning method on the basis of massive corpus
+    to provide a good feature representation for word learning. The so-called self supervised
+    learning refers to the supervised learning on the data without manual annotation. In future
+    specific NLP tasks, we can directly use the feature representation of Bert as the word
+    embedding feature of the task. So what Bert provides is a model for other task transfer
+    learning, which can be used as feature extractor after task fine-tuning or fixed.
 
   	\end{description}
 }
@@ -121,54 +123,32 @@
 
 
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
-\block{One-hot Coder Shortcoming}{
+\block{BERT:MLM Shortcoming}{
 \begin{itemize}
     %\emph{Group Outlying Aspects Mining}
+
+    \item
+     MLM means that during training, some words are masked from the input, and then the words are predicted by the context of the input,
+
+    \item
+      In Bert's experiment, 15\% of wordpiece tokens were randomly masked out.
+    When training the model, a sentence will be fed to the model many times
+    for parameter learning. However, Google does not mask these words every time.
+    Instead, it will directly replace them with [mask] 80\% of the time, replace
+    them with any other words 10\% of the time, and retain the original 
+    token 10\% of the time.
     
     \item
-      It doesn't work in \emph{logistic regression}. Because logistic regression requires
-    variables to be independent of each other. If you have only one attribute that
-    needs one hot coding, if a sample are 1 at the same time, the
-    two attributes will be completely related, which will inevitably lead to singular
-    Error.
-    
-    \item
-      That is, nonsingular matrix can't solve the unique solution and get the
-    unique model, but you can't delete a certain one hot extension variable of the same attribute.
-    
-    \item
-    For example, if we want to code ""China", "America", "Japan", "America"" one hot, how can we do it?
-    First we let "China" = 0 , "America" = 1, "Japan" = 2;
-    
+    For example: \\
+     80\% : "my dog is hairy" -> my dog is [mask]\\
+     10\% : "my dog is hairy" -> my dog is  apple\\
+     10\% : "my dog is hairy" -> my dog is  hairy
 \end{itemize}
 
 \vspace{.5cm}
 
 %数字和符号之间加 " \ "
 \center
-
-\begin{tabular}{ c | c | c | c }%几个c就有几行
-
-    \toprule 
-    Country           &  China           & America         & Japan     \\
-    \midrule
-    China             &  $ 1 $           &  $ 0 $          &   0       \\
-
-    America           &  $ 0 $           &  $ 1 $          &   0       \\
-
-    Japan             &  $ 0 $           &  $ 0 $          &   1       \\
-     \bottomrule
-     
-\end{tabular}
-
-\begin{description}
-  	%\item[Outlying Aspects Mining] aims to identify a subspace
-    %The task of \emph{Outlying Aspects Mining}
-    \item
-    Now we can get the one-hot code as:\\
-    ""China", "America", "Japan", "America"" = [[1,0,0], [0,1,0], [0,0,1], [0,1,0]]
-
-  	\end{description}
 
 \vspace{.2cm}
 
@@ -188,7 +168,7 @@
 
 
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
-\block{Bagging Algorithm}{
+\block{BERT:NSP}{
 
 
 %\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
@@ -202,29 +182,16 @@
 \begin{description}
 
   	\item
-   Based on bootstrap sampling, bagging algorithm can be constructed.
-   In this method, the train set is sampled several times by
-   bootstrap, and a weak learner model is trained with the data set formed
-   by each sampling, and several independent weak learners are obtained.
-   Finally, the combination of thus to predict. The training process is as follows:
-   
+   The task of next sense prediction (NSP) is to determine whether sentence B 
+   is the following part of sentence a. If yes, output 'isnext', otherwise 
+   output 'notnext'. \\The training data is generated by randomly extracting 
+   two consecutive sentences from the parallel corpus, 50\% of which keep 
+   the extracted two sentences, which conform to the isnext relationship, 
+   and the other 50\% of the second sentences are randomly extracted from the 
+   expectation, whose relationship is not next.
+
 \end{description}
 
-  \begin{itemize}	
-  
-    \item
-    Cycle, for I = 1,..., t.
-    
-     \item
-    The training sample set is obtained by bootstrap sampling.
-    
-     \item
-    A sample set of H is used to train the model.
-    
-     \item
-     End cycle output model combination.
-     
-  \end{itemize}
 
 }
 
@@ -242,91 +209,71 @@
 
 
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
-\block{Ensemble learning and Bootstrap sampling}{
+\block{roBERTa:An improved BERT algorithm}{
    \begin{itemize}	
-   
-    \item
-    Before we talk about the random forest,there are two ideas we need to know.
-    
-   \end{itemize}
-   
-  	\begin{description}
-  	%\item[Outlying Aspects Mining] aims to identify a subspace
-    %The task of \emph{Outlying Aspects Mining}
-    \item[Ensemble learning]combines multiple models to form a more accurate model.
-    The model involved in the combination is called weak learner.
-    These weak learner models are used to predict jointly
-    \item[Bootstrap sampling] is to take n samples back in the n samples set to form a data set.
-    By the way,If the sample size is large, there is a 0.368 probability
-    that each sample will not be selected in the whole sampling process.\\
-    But why? let's make a experience.\\
-    
-  	\end{description}
-  
-   \begin{itemize}	
-   
-    \item
-    If there are 10 samples, bootstrap sampling randomly takes 10
-    samples from them. The following two situations are possible:
-    \center
-    \item
-    1 1 1 1 1 1 1 1 1 1 \\
-    1 2 3 4 5 6 7 8 9 10
-    
-   \end{itemize}
-   
-   \begin{itemize}
-   
-    \item
-    Suppose there are n samples in the sample set, and the probability of
-    any one sample in each sampling is 1 / N, that is equal probability.
-    The probability that a sample is not selected in each sampling is 1-1 / n.
-    
-    \center
-    \item
-    $\lim\limits_{n \to \infty}(1-1/n)^n = 1/e = 0.368.$
-    
-   \end{itemize}
 
+    \item
+    Roberta makes the following optimization for Bert.
+    
+    \begin{itemize}
+    \item
+    Use bigger batch and more data to make the model train longer.
+    \item
+    Removed the NSP (next sense prediction) task.
+    \item
+    Train on a longer sequence.
+    \item
+    Mask mechanism for dynamically modifying training data.
+    \end{itemize}
+   \end{itemize}
   	
 }
 
-\block{Random Forest}
+\block{Static masking vs dynamic masking}
 {
 \begin{description}
 
   	\item
-    First, a random forest is composed of multiple decision trees. For the
-    classification pro sample will be sent to each decision tree
-    for prediction, and then vote. The class with the most votes is the final
-    classification result. For regression problems, the prediction output of
-    random forest is the mean value of all decision tree outputs.
-    
+    Static making: during data preprocessing, the mask matrix has been generated. 
+    Each sample will be randomly masked only once, and each epoch is the same.
+
     \item
-    That is to say, multiple random variables are added to get the mean value,
-    and the variance will be reduced. If the output value of each decision tree
-    is regarded as a random variable, the mean variance of the output value of 
-    multiple trees will be smaller than that of a single tree, so the variance 
-    of the model can be reduced.
-    
+    Modified version of static making: during preprocessing, copy 10 copies of data,
+    each copy uses a different mask, that is to say, there are 10 different mask
+    methods in the same sentence, and then train n / 10 epochs for each data.
+
     \item
-    The training samples of each tree are obtained by bootstrap sampling 
-    from the original training set. The features used in training each node of
-     decision tree are also obtained by random sampling, that is, some features
-      are randomly extracted from the feature vector to participate in the training.
+    Dynamic masking: every time a sequence is input to the model, 
+    a new maks method is generated. That is, the mask is not generated 
+    during preprocessing, but dynamically generated when the input is provided 
+    to the model.
 \end{description}
+}
 
-   \begin{itemize}	
-   
-    \item
-    There is no standard answer to determine the number of decision 
-    trees and the number of features to be selected for each split. The 
-    first problem depends on the size of the training set and the characteristics 
-    of the problem. There is no exact theoretical answer to the second question,
-     which can be determined by experiments.
-     
-   \end{itemize}
 
+\block{A larger BPE vocabulary}
+{
+\begin{description}
+  	\item
+    The vocabulary size of the original Bert is 30K, which is increased to 50K in
+    this paper.
+\end{description}
+}
+
+\block{Summary}
+{
+\begin{description}
+  	
+  \item
+  *Change the mask strategy dynamically, copy 10 copies of data, and
+  then do random mask uniformly.
+  \item
+  *The peak value of learning rate and the number of warm up
+  update steps are adjusted.
+  \item
+  *Training on longer sequences: do not truncate the sequences,
+  use full length sequences.
+\end{description}
 }
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
 
@@ -364,14 +311,14 @@
 \colorlet{notebgcolor}{blue!20}
 \colorlet{notefrcolor}{blue!20}
 %           左右                                            上下
-\note[targetoffsetx=-13cm, targetoffsety=-20cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
+\note[targetoffsetx=-13cm, targetoffsety=-10cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
 {
 \begin{minipage}{0.3\linewidth}
 \centering
 \includegraphics[width=24cm]{logos/tulip-wordmark.eps}
 \end{minipage}
 \begin{minipage}{0.7\linewidth}
-{ 
+{
 \center
  Thanks for watching  2020/10/16
 }
