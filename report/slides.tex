@@ -1137,11 +1137,7 @@ the outstanding features of the query object.
     \item
     The learning rate is 0.8.
     \item
-    Activation function is “Relu”.
-    \item
-    The output is one dimension and the convolution kernel size is 1 * 1.
-    \item
-    The optimizer is “SGD”.
+    Activation function is “Softmax”.
     \item
     The loss function is “categorical_crossentropy”.
     \item
@@ -1159,7 +1155,7 @@ the outstanding features of the query object.
   
   \begin{itemize}
     \item
-    Finally, the loss rate of the trained model is 0.5393.
+    Finally, the accuracy of the trained model is 0.5393.
    \end{itemize}
 
 \end{slide} 
@@ -1202,11 +1198,9 @@ the outstanding features of the query object.
     Roberta is an improved algorithm of bert.
     \begin{itemize}
       \item
-      With bigger batch and more data, let the model train longer.
+      With bigger batchsize and more data, let the model train longer.
       \item
       Removed the NSP (next sense prediction) task. 
-      \item
-      Train on a longer sequence.
       \item
       Mask mechanism for dynamically modifying training data.
     \end{itemize}
@@ -1234,15 +1228,13 @@ the outstanding features of the query object.
 \begin{slide}[toc=,bm=]{Model:roBERTa}
   \begin{itemize}
     \item
-    Based on our previous data visualization.We set the MAX_LEN = 48.
-    \item
     The learning rate is 0.9.
     \item
     The optimizer is “Adam”.
     \item
     The loss function is “categorical_crossentropy”.
     \item
-    Using k-fold cross validation, it is divided into five parts. Train five times.
+    Using k-fold cross validation, it is divided into five parts. Train three times.
     \end{itemize}
   \end{slide} 
 
@@ -1254,7 +1246,7 @@ the outstanding features of the query object.
     
     \begin{itemize}
       \item
-      Finally, the loss rate of the trained model is 0.7072782233322157.
+      Finally, the accuracy of the trained model is 0.7072782233322157.
      \end{itemize}
      
   \end{slide} 

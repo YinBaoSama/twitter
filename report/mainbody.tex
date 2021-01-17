@@ -4,20 +4,6 @@
 
 \begin{JournalOnly}
 \end{JournalOnly}
-Neural network has become a model that can deal with many NLP tasks effectively.\\
-This kind of method is similar for sequence labeling tasks (such as CWS, POS, NER). The token is mapped from discrete one hot representation to dense embedding in low dimensional space, and then the embedding sequence of sentences is input into RNN. Neural network is used to extract features automatically, and softmax is used to predict the label of each token.\\
-The disadvantage is that the token is classified independently when it is labeled, 
-and the label predicted above cannot be used directly.\\
-In order to solve this problem, we propose LSTM + CRF model for sequence annotation,
- and join CRF layer after LSTM layer to do sentence level label prediction, 
- so that the annotation process is no longer independent classification of each token.
-\section{Learning stage} \label{sec-experiment}
-Stage one: forget stage:
-Choose the most important from historical data.\\
-Stage two: choose the memory stage:
-Select the most important from the input data.\\
-Stage three: output stage:
-Control output.
 \section{Model Building} \label{sec-conclusions}
 Main ideas:\\
 1.The token is mapped from a discrete one hot representation to a low dimensional space to become a dense embedding.\\
@@ -36,13 +22,16 @@ Input: the n-dimensional vector corresponding to the word\\
 Objective: to extract sentence features automatically\\
 Operation: the char embedding sequence of each word is taken as the input of each time step of Bi LSTM, and then the hidden state sequence of forward LSTM output and the hidden state sequence of reverse LSTM output in each position are spliced according to the position to get the complete hidden state sequence.
 Here you can capture some rules inside the word. Combining with pre training embedding, we can get better word embedding.
-\section{Linear layer.} \label{sec-conclusions}
-Input: hidden state sequence of Bi LSTM output\\
-Objective: to get the sentence features extracted automatically\\
-Operation: map the hidden state sequence to the dimension of the number of tags, so that each dimension can be regarded as the score value of word to tag. At this time, if softmax is used, the classification results can be obtained directly, but the information that has been marked in other locations can not be applied, so a CRF layer is connected next.
-\section{Loss layer} \label{sec-conclusions}
-Embedded CRF layer.\\
+\section{CRF layer} \label{sec-conclusions}
 Input: word for the tag sequence rating\\
 Objective: sequence annotation at sentence level\\
 Operation: score again; the score is divided into two parts, LSTM output score plus CRF transfer matrix (i.e. transfer score from one label to another label). After scoring, softmax is used to get the normalized probability.
+\section{CRF} \label{sec-conclusions}
+For example,You have many photos of Xiao Ming at different times of the day, from Xiao Ming getting up with his pants to taking off his pants and going to bed. Now the task is to sort these photos. For example, if some photos are taken during a meal, they should be labeled as eating; if some photos are taken during a run, they should be labeled as running; if some photos are taken during a meeting, they should be labeled as meeting.\\
+Simple method:The question is, what are you going to do? A simple and intuitive way is to train a multi classifier regardless of the time sequence of these photos. It is to use some labeled photos as training data to train a model and classify them directly according to the characteristics of the photos. For example, if the photo was taken at 6:00 a.m. and the picture is dark, label it sleeping; if there is a car in the photo, label it driving.\\
+Is this feasible? Because we ignore the important information of the time sequence between these photos, our classifier will be defective. For example, if there is a picture of Xiao Ming with his mouth closed, how can it be classified? Obviously, it's difficult to judge directly. You need to refer to the picture before you shut up. If the previous picture shows Xiao Ming is eating, then the picture of shutting up is probably Xiao Ming chewing food to swallow, so you can label it as eating. If the previous picture shows Xiao Ming singing, then the picture of shutting up is probably a snapshot of Xiao Ming singing, so you can label it as singing The label of the song.\\
 
+CRF:Therefore, in order for our classifier to have better performance, we must take into account the label information of the adjacent photos when classifying a photo. This is where conditional random field (CRF) can play its role!\\
+Very simple, is to give each word in a sentence marked part of speech. For example, the sentence "Bob drank coffee at Starbucks" after indicating the part of speech of each word is like this: "Bob drank (verb) coffee (noun) at (preposition) stars".\\
+Next, we use conditional random fields to solve this problem.\\
+Take the above sentence as an example, there are five words, we will: (noun, verb, noun, preposition, noun) as a tagging sequence, called L. there are many optional tagging sequences, for example, l can also be like this: (noun, verb, verb, preposition, noun). We want to select the most reliable one from so many optional tagging sequences as our interpretation of this sentence The label of. How to judge whether a labeled sequence is reliable or not? If we give each marking sequence a score, the higher the score, the more reliable the marking sequence is. We can at least say that if there is a marking sequence after the verb in the marking, we should give it a negative score!! We can define a set of characteristic functions, use this set of characteristic functions to score a annotation sequence, and then select the most reliable annotation sequence. That is to say, each feature function can be used to score a annotation sequence. The final score of the annotation sequence is the combination of the scores of all feature functions in the set on the same annotation sequence.

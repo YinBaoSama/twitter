@@ -1,0 +1,337 @@
+
+\documentclass[
+ size=14pt,
+ paper=smartboard,  %a4paper, smartboard, screen
+ mode=present, 		%present, handout, print
+ display=slides, 	% slidesnotes, notes, slides
+ style=tuliplab,  	% TULIP Lab style
+ pauseslide,
+ fleqn,leqno]{powerdot}
+
+
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{stackengine}
+\usepackage{smartdiagram}
+\usepackage{attrib}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{amsthm} 
+\usepackage{mathtools}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{boxedminipage}
+\usepackage{rotate}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag,overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks,pst-3d,pst-grad,pstricks-add,pst-text,pst-node,pst-tree}
+\usepackage{moreverb,epsfig,subfigure}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{etex}
+\usepackage{breqn}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{gitinfo2}
+\usepackage{siunitx}
+\usepackage{nicefrac}
+%\usepackage{geometry}
+%\geometry{verbose,letterpaper}
+\usepackage{media9}
+\usepackage{animate}
+%\usepackage{movie15}
+\usepackage{auto-pst-pdf}
+
+\usepackage{breakurl}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+
+
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage{dtk-logos}
+\usepackage{tikz}
+\usepackage{adigraph}
+%\usepackage{tkz-graph}
+\usepackage{hyperref}
+%\usepackage{ulem}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{fontawesome}
+
+
+\usepackage{todonotes}
+% \usepackage{pst-rel-points}
+\usepackage{animate}
+\usepackage{fontawesome}
+
+\usepackage{listings}
+\lstset{frameround=fttt,
+frame=trBL,
+stringstyle=\ttfamily,
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+\lstnewenvironment{code}{
+\lstset{frame=single,escapeinside=`',
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+}{}
+
+
+\usepackage{hyperref}
+\hypersetup{ % TODO: PDF meta Data
+  pdftitle={Presentation Title},
+  pdfauthor={Cong Ma},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+
+
+% \usepackage{auto-pst-pdf}
+% package to show source code
+
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\newlength{\pixel}\setlength\pixel{0.000714285714\slidewidth}
+\setlength{\TPHorizModule}{\slidewidth}
+\setlength{\TPVertModule}{\slideheight}
+\newcommand\highlight[1]{\fbox{#1}}
+\newcommand\icite[1]{{\footnotesize [#1]}}
+
+\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1}\fcolorbox{pdcolor2}{white}{#2}}
+\newcommand\vpspace[1]{\vphantom{\vspace{#1}}}
+\newcommand\hpspace[1]{\hphantom{\hspace{#1}}}
+\newcommand\COMMENT[1]{}
+
+\newcommand\placepos[3]{\hbox to\z@{\kern#1
+        \raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces}
+
+\renewcommand{\baselinestretch}{1.2}
+
+
+\newcommand{\draftnote}[3]{
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\shaoni}[1]{\draftnote{green}{sn:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\snMarker}
+	{\todo[author=Sn,size=\tiny,inline,color=green!40]
+	{Shaoni has worked up to here.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title
+% TODO: Customize to your Own Title, Name, Address
+%
+\title{Learning Report}
+\author{
+Cong Ma
+\\
+\\
+\\QingDao Technological University
+\\
+\\
+
+}
+\date{\gitCommitterDate}
+
+
+% Customize the setting of slides
+\pdsetup{
+% TODO: Customize the left footer, and right footer
+rf=\href{http://www.tulip.org.au}{
+Last Changed by: \textsc{\gitCommitterName}\ \gitVtagn-\gitAbbrevHash\ (\gitAuthorDate)
+},
+cf={Learning Report},
+}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Overview}
+\tableofcontents[content=currentsection,type=1]
+\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Term summary}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Term summary}
+  \begin{itemize}
+    \item
+    First of all, in the past six months, I have completed the learning tasks of flip 00 and flip 01.
+    
+    \begin{itemize}
+    \item
+    I learned to use a lot of software on flip 00.Such as:Latex,Github and Smartgit.
+  
+    \item
+    In flip 01,I have learned some NLP methods and knowledge.
+    \end{itemize}
+
+    \item
+    In addition,I also completed many graduate foundation courses.
+
+  \end{itemize}
+
+%%==========================================================================================
+
+%%==========================================================================================
+
+\end{slide}
+
+\begin{slide}[toc=,bm=]{Term summary}
+  \begin{itemize}
+    \item
+    Master some basic syntax of Python.
+    \item
+    Learn and understand the artificial neural network and machine learning algorithm.
+    \item
+    I think my biggest harvest  is  understanding and realizing some simple algorithms of artificial intelligence.
+
+  \end{itemize}
+
+%%==========================================================================================
+
+%%==========================================================================================
+
+\end{slide}
+
+\section{Future Plans}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Future Plans}
+%Related Work - Outlying Aspects Mining
+% \begin{itemize}
+% \item
+% Existing Methods - \textcolor{orange}{Feature selection}
+
+% \begin{itemize}
+% \item
+% To distinguish two classes:
+% the query point (positive) \& rest of data (negative)
+% \end{itemize}
+% \vspace{1cm}
+% \twocolumn[
+% \savevalue{lfrheight}=5cm,
+% \savevalue{lfrprop}={
+% linestyle=solid,framearc=.2,linewidth=1pt},
+% rfrheight=\usevalue{lfrheight},
+% rfrprop=\usevalue{lfrprop}
+% ]{
+% Disadvantages
+% \begin{itemize}
+% \item
+% \smallskip
+% Positive and negative classes are \textcolor{orange}{Not} balanced.
+
+% \item
+% \smallskip
+% \textcolor{orange}{Not} quantify the outlying degree accurately.
+
+% \item
+% \smallskip
+% \textcolor{orange}{Not} identify group outlying aspects.
+% \end{itemize}
+% }
+% {
+% Advantages
+% \begin{itemize}
+% \item
+% \smallskip
+% Easy to operate.
+
+% \item
+% \smallskip
+% Resolve dimensionality bias.
+% \end{itemize}
+% }
+% \end{itemize}
+\begin{itemize}
+  \item
+  Learn more machine learning algorithms.
+  \item
+  Continue to follow the arrangement and complete the study of flip 02 and flip 03.
+
+\end{itemize}
+
+\end{slide}
+
+
+\section{Thinking and interest in research}
+
+\begin{slide}{Thinking and interest in research}
+  \begin{itemize}
+    \item
+    In my submission,machine learning can be divided into the following steps.
+    
+    \begin{itemize}
+    \item
+    Problem definition.
+    \item
+    Data collection.
+    \item
+    Data visualization.
+    \item
+    Data cleaning.
+    \item
+    Model establishment and optimization.
+    \item
+    summary.
+    \end{itemize}
+  \end{itemize}
+\end{slide} 
+
+
+\begin{wideslide}[]{Contact Information}
+\centering
+\vspace{\stretch{1}}
+\twocolumn[
+lcolwidth=0.35\linewidth,
+rcolwidth=0.65\linewidth
+]
+{
+% \centerline{\includegraphics[scale=.2]{tulip-logo.eps}}
+}
+{
+\vspace{\stretch{1}}
+Made By Cong Ma\\
+QingDao Technological University\\
+
+% \begin{description}
+%  \item[\textcolor{orange}{\faEnvelope}] \href{mailto:gangli@tulip.org.au}
+%  {\textsc{\footnotesize{gangli@tulip.org.au}}}
+
+%  \item[\textcolor{orange}{\faHome}] \href{http://www.tulip.org.au}
+%  {\textsc{\footnotesize{Team for Universal Learning and Intelligent Processing}}}
+% \end{description}
+}
+\vspace{\stretch{1}}
+\end{wideslide}
+
+\end{document}
+
+\endinput
